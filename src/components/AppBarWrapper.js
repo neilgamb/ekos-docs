@@ -1,57 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, IconButton, Toolbar, Typography, withStyles, withTheme } from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
+import { AppBar, Toolbar, Typography, withStyles, withTheme } from '@material-ui/core';
+import classNames from 'classnames';
 
 function AppBarWrapper(props) {
+  const { classes, title } = props;
   return (
     <AppBar
-      style={
-        props.type === 'secondary'
-          ? {
-              position: 'absolute',
-              // zIndex: -1,
-            }
-          : {
-              position: 'static',
-              // zIndex: 0,
-            }
-      }
-      className={props.classes.appBar}
-      position="static"
+      position="absolute"
+      className={classNames(classes.appBar, classes[`appBar-left`])}
     >
       <Toolbar>
-        <Typography
-          style={
-            props.type === 'secondary'
-              ? {
-                  marginLeft: 160,
-                  color: props.theme.palette.text.secondary,
-                }
-              : {
-                  marginLeft: 'auto',
-                  zIndex: 0,
-                  color: props.theme.palette.text.primary,
-                }
-          }
-          variant="title"
-          className={props.classes.appBarHeader}
-        >
-          {props.title}
-        </Typography>
+        <Typography variant="title">{title}</Typography>
       </Toolbar>
     </AppBar>
   );
 }
 
+const drawerWidth = 240;
+
 const styles = {
   appBar: {
-    backgroundColor: 'transparent',
-    boxShadow: 'none',
-    top: 0,
+    width: `calc(100% - ${drawerWidth}px)`,
   },
-  appBarHeader: {
-    flexGrow: 1,
+  'appBar-left': {
+    marginLeft: drawerWidth,
   },
   menuButton: {
     marginLeft: -12,
@@ -70,5 +43,5 @@ AppBarWrapper.propTypes = {
 };
 
 AppBarWrapper.defaultProps = {
-  menuToggle: () => {},
+  menuToggle: () => { },
 };
