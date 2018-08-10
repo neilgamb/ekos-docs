@@ -6,16 +6,15 @@ import { Menu } from '@material-ui/icons';
 function AppBarWrapper(props) {
   return (
     <AppBar
-      // style={{ position: props.type === 'secondary' ? 'absolute' : 'static' }}
       style={
         props.type === 'secondary'
           ? {
               position: 'absolute',
-              zIndex: -1,
+              // zIndex: -1,
             }
           : {
               position: 'static',
-              zIndex: 0,
+              // zIndex: 0,
             }
       }
       className={props.classes.appBar}

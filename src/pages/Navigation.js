@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Drawer, MenuItem, IconButton, withStyles } from '@material-ui/core';
-import { Close } from '@material-ui/icons';
+import { Drawer, MenuItem, withStyles } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 
+const drawerWidth = 240;
+
 const Navigation = props => (
-  <Drawer transitionDuration={300} open={props.open}>
-    <IconButton
-      style={{ transform: props.open ? 'none' : 'rotate(45deg)' }}
-      className={props.classes.closeButton}
-      onClick={props.menuToggle}
-    >
-      <Close />
-    </IconButton>
+  <Drawer
+    classes={{
+      paper: props.classes.drawerPaper,
+    }}
+    transitionDuration={300}
+    open={props.open}
+    variant="permanent"
+    anchor="left"
+  >
     <div style={{ marginTop: 75 }}>
       <NavLink
         exact
@@ -27,17 +29,9 @@ const Navigation = props => (
         className={props.classes.navLink}
         onClick={props.menuToggle}
         activeclass="active"
-        to="/gallery"
-      >
-        <MenuItem className={props.classes.menuItem}>Gallery</MenuItem>
-      </NavLink>
-      <NavLink
-        className={props.classes.navLink}
-        onClick={props.menuToggle}
-        activeclass="active"
         to="/about"
       >
-        <MenuItem className={props.classes.menuItemSec}>About</MenuItem>
+        <MenuItem className={props.classes.menuItem}>About</MenuItem>
       </NavLink>
       <NavLink
         className={props.classes.navLink}
@@ -45,30 +39,24 @@ const Navigation = props => (
         activeclass="active"
         to="/contact"
       >
-        <MenuItem className={props.classes.menuItemSec}>Contact</MenuItem>
+        <MenuItem className={props.classes.menuItem}>Contact</MenuItem>
       </NavLink>
     </div>
   </Drawer>
 );
 
-const styles = theme => ({
-  closeButton: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    transition: '250ms',
+const styles = {
+  drawerPaper: {
+    position: 'relative',
+    width: drawerWidth,
   },
   menuItem: {
     padding: '10px 100px 10px 25px',
   },
-  menuItemSec: {
-    padding: '10px 100px 10px 25px',
-    color: theme.palette.text.secondary,
-  },
   navLink: {
     textDecoration: 'none',
   },
-});
+};
 
 export default withStyles(styles)(Navigation);
 
