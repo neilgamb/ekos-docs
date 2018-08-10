@@ -21,11 +21,6 @@ function AppBarWrapper(props) {
       position="static"
     >
       <Toolbar>
-        {props.type === 'primary' ? (
-          <IconButton onClick={props.menuToggle} className={props.classes.menuButton}>
-            <Menu />
-          </IconButton>
-        ) : null}
         <Typography
           style={
             props.type === 'secondary'

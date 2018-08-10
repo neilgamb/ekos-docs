@@ -15,33 +15,31 @@ const Navigation = props => (
     variant="permanent"
     anchor="left"
   >
-    <div style={{ marginTop: 75 }}>
-      <NavLink
-        exact
-        className={props.classes.navLink}
-        onClick={props.menuToggle}
-        activeclass="active"
-        to="/"
-      >
-        <MenuItem className={props.classes.menuItem}>Home</MenuItem>
-      </NavLink>
-      <NavLink
-        className={props.classes.navLink}
-        onClick={props.menuToggle}
-        activeclass="active"
-        to="/about"
-      >
-        <MenuItem className={props.classes.menuItem}>About</MenuItem>
-      </NavLink>
-      <NavLink
-        className={props.classes.navLink}
-        onClick={props.menuToggle}
-        activeclass="active"
-        to="/contact"
-      >
-        <MenuItem className={props.classes.menuItem}>Contact</MenuItem>
-      </NavLink>
-    </div>
+    <NavLink
+      exact
+      className={props.classes.navLink}
+      onClick={props.menuToggle}
+      activeclass="active"
+      to="/"
+    >
+      <MenuItem className={props.classes.menuItem}>Home</MenuItem>
+    </NavLink>
+    <NavLink
+      className={props.classes.navLink}
+      onClick={props.menuToggle}
+      activeclass="active"
+      to="/about"
+    >
+      <MenuItem className={props.classes.menuItem}>About</MenuItem>
+    </NavLink>
+    <NavLink
+      className={props.classes.navLink}
+      onClick={props.menuToggle}
+      activeclass="active"
+      to="/contact"
+    >
+      <MenuItem className={props.classes.menuItem}>Contact</MenuItem>
+    </NavLink>
   </Drawer>
 );
 
