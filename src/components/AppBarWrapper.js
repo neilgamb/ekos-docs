@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, Toolbar, Typography, withStyles, withTheme } from '@material-ui/core';
-import classNames from 'classnames';
+import { AppBar, IconButton, Toolbar, Typography, withStyles, withTheme } from '@material-ui/core';
+import { Menu } from '@material-ui/icons';
 
 function AppBarWrapper(props) {
-  const { classes, title } = props;
+  const { classes, title, handleDrawerToggle } = props;
   return (
-    <AppBar
-      position="absolute"
-      className={classNames(classes.appBar, classes[`appBar-left`])}
-    >
+    <AppBar className={classes.appBar}>
       <Toolbar>
-        <Typography variant="title">{title}</Typography>
+        <IconButton
+          color="inherit"
+          aria-label="Open drawer"
+          onClick={handleDrawerToggle}
+          className={classes.navIconHide}
+        >
+          <Menu />
+        </IconButton>
+        <Typography variant="title" color="inherit" noWrap>
+          {title}
+        </Typography>
       </Toolbar>
     </AppBar>
   );
@@ -19,18 +26,20 @@ function AppBarWrapper(props) {
 
 const drawerWidth = 240;
 
-const styles = {
+const styles = theme => ({
   appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-  },
-  'appBar-left': {
+    position: 'absolute',
     marginLeft: drawerWidth,
+    [theme.breakpoints.up('md')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
   },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
+  navIconHide: {
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   },
-};
+});
 
 export default withTheme()(withStyles(styles)(AppBarWrapper));
 

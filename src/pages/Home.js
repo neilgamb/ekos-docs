@@ -1,12 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { withStyles } from '@material-ui/core';
-import AppBarWrapper from '../components/AppBarWrapper';
+import { Typography, withStyles } from '@material-ui/core';
 
 class Home extends Component {
   render() {
     return (
       <Fragment>
-        <AppBarWrapper title="Home" type="secondary" />
+        <Typography>Home</Typography>
       </Fragment>
     );
   }

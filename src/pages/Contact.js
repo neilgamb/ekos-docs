@@ -1,15 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button,
-  ButtonBase,
   Grid,
   Paper,
-  TextField,
   Typography,
   withStyles,
 } from '@material-ui/core';
-import { Phone, Email } from '@material-ui/icons';
 import AppBarWrapper from '../components/AppBarWrapper';
 
 function Contact(props) {
@@ -21,53 +17,20 @@ function Contact(props) {
       <div className={classes.root}>
         <Grid container spacing={8}>
           <Grid item xs={12} sm={6}>
-            <Paper elevation={0} className={classes.paper}>
-              <Typography align="left" variant="subheading">
-                <div className={classes.contactItem}>
-                  <div className={classes.contactItemType}>Email</div>
-                  <a href="mailto:neilgamb@gmail.com" target="_blank" rel="noopener noreferrer">
-                    <div className={classes.contactItemValue}>
-                      <Email className={classes.contactItemIcon} />neilgamb@gmail.com
-                    </div>
-                  </a>
-                </div>
-              </Typography>
-              <Typography align="left" variant="subheading">
-                <div className={classes.contactItem}>
-                  <div className={classes.contactItemType}>Phone</div>
-                  <a href="tel:1-704-576-3165">
-                    <div className={classes.contactItemValue}>
-                      <Phone className={classes.contactItemIcon} />704.576.3165
-                    </div>
-                  </a>
-                </div>
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paperContactForm}>
-              <form method="POST" action="https://formspree.io/neilgamb@gmail.com">
-                <TextField
-                  type="email"
-                  name="email"
-                  label="Email"
-                  placeholder="your@email.com"
-                  margin="normal"
-                />
-                <br />
-                <TextField
-                  placeholder="Type your message here"
-                  label="Message"
-                  name="message"
-                  multiline
-                  rows="4"
-                  margin="normal"
-                />
-                <br />
-                <Button>
-                  <ButtonBase type="submit">Send</ButtonBase>
-                </Button>
-              </form>
+            <Paper elevation={0} className={props.classes.paper}>
+              <Typography align="justify" variant="subheading">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper, ipsum ut
+                condimentum pulvinar, ligula diam accumsan mi, eget tempor mauris est pretium erat. In
+                malesuada nisl leo, vitae aliquet quam aliquet vel. Vestibulum imperdiet euismod arcu
+                at fringilla. Mauris scelerisque orci non turpis fringilla, et tempus odio facilisis.
+                Fusce maximus gravida justo sed venenatis. Suspendisse nec ullamcorper nunc, in
+                bibendum nunc. Suspendisse pulvinar viverra arcu quis fermentum. Quisque sem dolor,
+                interdum vitae lacus ut, tempor tempor diam. Vestibulum sodales eros tellus, vitae
+                fermentum neque lacinia ut. Quisque molestie est bibendum libero volutpat ultrices.
+                Cras eros purus, porttitor bibendum tellus non, auctor gravida ex. Vivamus at
+                consequat ipsum. Donec viverra lectus vel bibendum eleifend. Donec elit nibh, iaculis
+                placerat maximus vitae, euismod sit amet metus. Quisque ac est metus.
+            </Typography>
             </Paper>
           </Grid>
         </Grid>
