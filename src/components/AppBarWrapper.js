@@ -1,63 +1,68 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import {
-//   AppBar,
-//   IconButton,
-//   Toolbar,
-//   Typography,
-//   withStyles,
-//   withTheme
-// } from '@material-ui/core';
-// import { Menu } from '@material-ui/icons';
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { AppBar, IconButton, Toolbar, Typography, withStyles, withTheme } from '@material-ui/core';
+import { Menu } from '@material-ui/icons';
 
-// function AppBarWrapper(props) {
-//   const { classes, title, handleDrawerToggle } = props;
-//   return (
-//     <AppBar className={classes.appBar}>
-//       <Toolbar>
-//         <IconButton
-//           color="inherit"
-//           aria-label="Open drawer"
-//           onClick={handleDrawerToggle}
-//           className={classes.navIconHide}
-//         >
-//           <Menu />
-//         </IconButton>
-//         <Typography variant="title" color="inherit" noWrap>
-//           {title}
-//         </Typography>
-//       </Toolbar>
-//     </AppBar>
-//   );
-// }
+function AppBarWrapper(props) {
+  const { classes, open, handleDrawerOpen } = props;
+  return (
+    <AppBar
+      className={classNames(classes.appBar, {
+        [classes.appBarShift]: open,
+        [classes['appBarShift-left']]: open,
+      })}
+    >
+      <Toolbar disableGutters={!open}>
+        <IconButton
+          color="inherit"
+          aria-label="Open drawer"
+          onClick={handleDrawerOpen}
+          className={classNames(classes.menuButton, open && classes.hide)}
+        >
+          <Menu />
+        </IconButton>
+        <Typography variant="title" color="inherit" noWrap>
+          ekos_docs
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  );
+}
 
-// const drawerWidth = 240;
+const drawerWidth = 240;
 
-// const styles = theme => ({
-//   appBar: {
-//     position: 'absolute',
-//     marginLeft: drawerWidth,
-//     [theme.breakpoints.up('md')]: {
-//       width: `calc(100% - ${drawerWidth}px)`,
-//     },
-//   },
-//   navIconHide: {
-//     [theme.breakpoints.up('md')]: {
-//       display: 'none',
-//     },
-//   },
-// });
+const styles = theme => ({
+  appBar: {
+    position: 'absolute',
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  'appBarShift-left': {
+    marginLeft: drawerWidth,
+  },
+  menuButton: {
+    marginLeft: 12,
+    marginRight: 20,
+  },
+  hide: {
+    display: 'none',
+  },
+});
 
-// export default withTheme()(withStyles(styles)(AppBarWrapper));
+AppBarWrapper.propTypes = {
+  open: PropTypes.bool.isRequired,
+  classes: PropTypes.instanceOf(Object).isRequired,
+  handleDrawerOpen: PropTypes.func.isRequired,
+};
 
-// AppBarWrapper.propTypes = {
-//   classes: PropTypes.instanceOf(Object).isRequired,
-//   menuToggle: PropTypes.func,
-//   title: PropTypes.string.isRequired,
-//   type: PropTypes.string.isRequired,
-//   theme: PropTypes.instanceOf(Object).isRequired,
-// };
-
-// AppBarWrapper.defaultProps = {
-//   menuToggle: () => { },
-// };
+export default withTheme()(withStyles(styles)(AppBarWrapper));

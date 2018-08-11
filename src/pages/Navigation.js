@@ -1,96 +1,52 @@
-// import React, { Fragment } from 'react';
-// import PropTypes from 'prop-types';
-// import { Drawer, Hidden, MenuItem, withStyles } from '@material-ui/core';
-// import { NavLink } from 'react-router-dom';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Drawer, Divider, IconButton, withStyles } from '@material-ui/core';
+import { ChevronLeft } from '@material-ui/icons';
 
-// function Navigation(props) {
-//   const { classes, theme, mobileOpen, handleDrawerToggle } = props;
-//   const drawer = (
-//     <div>
-//       <div className={classes.toolbar} />
-//       <NavLink
-//         exact
-//         className={classes.navLink}
-//         activeclass="active"
-//         to="/"
-//       >
-//         <MenuItem className={classes.menuItem}>Home</MenuItem>
-//       </NavLink>
-//       <NavLink
-//         className={classes.navLink}
-//         activeclass="active"
-//         to="/about"
-//       >
-//         <MenuItem className={classes.menuItem}>About</MenuItem>
-//       </NavLink>
-//       <NavLink
-//         className={classes.navLink}
-//         activeclass="active"
-//         to="/contact"
-//       >
-//         <MenuItem className={classes.menuItem}>Contact</MenuItem>
-//       </NavLink>
-//     </div>
+function Navigation(props) {
+  const { classes, open, handleDrawerClose } = props;
+  return (
+    <Drawer
+      variant="persistent"
+      anchor="left"
+      open={open}
+      classes={{
+        paper: classes.drawerPaper,
+      }}
+    >
+      <div className={classes.drawerHeader}>
+        <IconButton onClick={handleDrawerClose}>
+          <ChevronLeft />
+        </IconButton>
+      </div>
+      <Divider />
+      <h1>Hello</h1>
+      <Divider />
+      <h1>World</h1>
+    </Drawer>
+  );
+}
 
-//   )
-//   return (
-//     <Fragment>
-//       <Hidden mdUp>
-//         <Drawer
-//           variant="temporary"
-//           anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-//           open={mobileOpen}
-//           onClose={handleDrawerToggle}
-//           classes={{
-//             paper: classes.drawerPaper,
-//           }}
-//           ModalProps={{
-//             keepMounted: true,
-//           }}
-//         >
-//           {drawer}
-//         </Drawer>
-//       </Hidden>
-//       <Hidden smDown implementation="css">
-//         <Drawer
-//           variant="permanent"
-//           open
-//           classes={{
-//             paper: classes.drawerPaper,
-//           }}
-//         >
-//           {drawer}
-//         </Drawer>
-//       </Hidden>
-//     </Fragment>
-//   );
-// }
+const drawerWidth = 240;
 
-// const drawerWidth = 240;
+const styles = theme => ({
+  drawerPaper: {
+    position: 'relative',
+    width: drawerWidth,
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
+});
 
-// const styles = theme => ({
-//   drawerPaper: {
-//     width: drawerWidth,
-//     [theme.breakpoints.up('md')]: {
-//       position: 'relative',
-//     },
-//   },
-//   menuItem: {
-//     padding: '10px 100px 10px 25px',
-//   },
-//   navLink: {
-//     textDecoration: 'none',
-//   },
-//   toolbar: theme.mixins.toolbar,
-// });
+Navigation.propTypes = {
+  open: PropTypes.bool.isRequired,
+  classes: PropTypes.instanceOf(Object).isRequired,
+  handleDrawerClose: PropTypes.func.isRequired,
+};
 
-// export default withStyles(styles, { withTheme: true })(Navigation);
-
-// Navigation.propTypes = {
-//   open: PropTypes.bool,
-//   classes: PropTypes.instanceOf(Object).isRequired,
-// };
-
-// Navigation.defaultProps = {
-//   open: false,
-// };
+export default withStyles(styles, { withTheme: true })(Navigation);
