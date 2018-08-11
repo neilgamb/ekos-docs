@@ -1,16 +1,16 @@
-// import React, { Component, Fragment } from 'react';
-// import { Typography, withStyles } from '@material-ui/core';
+import React, { Component, Fragment } from 'react';
+import { Typography, withStyles } from '@material-ui/core';
 
-// class Home extends Component {
-//   render() {
-//     return (
-//       <Fragment>
-//         <Typography>Home</Typography>
-//       </Fragment>
-//     );
-//   }
-// }
+class Home extends Component {
+  render() {
+    return (
+      <Fragment>
+        <Typography>Home</Typography>
+      </Fragment>
+    );
+  }
+}
 
-// const styles = {};
+const styles = {};
 
-// export default withStyles(styles)(Home);
+export default withStyles(styles)(Home);

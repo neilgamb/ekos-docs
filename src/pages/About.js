@@ -1,12 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Paper, Typography, withStyles } from '@material-ui/core';
-import AppBarWrapper from '../components/AppBarWrapper';
 
 const About = props => (
   <Fragment>
-    <AppBarWrapper title="About" type="secondary" />
-
     <div className={props.classes.root}>
       <Grid container spacing={8}>
         <Grid item xs={12} sm={6}>

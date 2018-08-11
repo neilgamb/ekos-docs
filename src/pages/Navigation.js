@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Drawer, Divider, IconButton, withStyles } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
+import { Drawer, MenuItem, IconButton, withStyles } from '@material-ui/core';
 import { ChevronLeft } from '@material-ui/icons';
 
 function Navigation(props) {
@@ -19,10 +20,16 @@ function Navigation(props) {
           <ChevronLeft />
         </IconButton>
       </div>
-      <Divider />
-      <h1>Hello</h1>
-      <Divider />
-      <h1>World</h1>
+
+      <NavLink exact className={classes.navLink} activeclass="active" to="/">
+        <MenuItem className={classes.menuItem}>Home</MenuItem>
+      </NavLink>
+      <NavLink className={classes.navLink} activeclass="active" to="/about">
+        <MenuItem className={classes.menuItem}>About</MenuItem>
+      </NavLink>
+      <NavLink className={classes.navLink} activeclass="active" to="/contact">
+        <MenuItem className={classes.menuItem}>Contact</MenuItem>
+      </NavLink>
     </Drawer>
   );
 }
@@ -40,6 +47,12 @@ const styles = theme => ({
     justifyContent: 'flex-end',
     padding: '0 8px',
     ...theme.mixins.toolbar,
+  },
+  menuItem: {
+    padding: '10px 100px 10px 25px',
+  },
+  navLink: {
+    textDecoration: 'none',
   },
 });
 
