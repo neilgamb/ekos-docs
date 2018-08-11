@@ -22,9 +22,6 @@ function AppBarWrapper(props) {
         >
           <Menu />
         </IconButton>
-        <Typography variant="title" color="inherit" noWrap>
-          ekos_docs
-        </Typography>
       </Toolbar>
     </AppBar>
   );

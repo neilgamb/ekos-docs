@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { Drawer, MenuItem, IconButton, withStyles } from '@material-ui/core';
+import { Drawer, MenuItem, IconButton, Typography, withStyles } from '@material-ui/core';
 import { ChevronLeft } from '@material-ui/icons';
+
+import logo from '../images/ekos_.png';
 
 function Navigation(props) {
   const { classes, open, handleDrawerClose } = props;
@@ -16,6 +18,13 @@ function Navigation(props) {
       }}
     >
       <div className={classes.drawerHeader}>
+        <NavLink exact to="/">
+          <img className={classes.logo} src={logo} alt="Home" />
+        </NavLink>
+
+        <Typography className={classes.siteTitle} variant="title" color="inherit" noWrap>
+          docs
+        </Typography>
         <IconButton onClick={handleDrawerClose}>
           <ChevronLeft />
         </IconButton>
@@ -44,9 +53,16 @@ const styles = theme => ({
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     padding: '0 8px',
     ...theme.mixins.toolbar,
+  },
+  siteTitle: {
+    marginLeft: -50,
+    fontWeight: 600,
+  },
+  logo: {
+    width: 70,
   },
   menuItem: {
     padding: '10px 100px 10px 25px',

@@ -6,8 +6,9 @@ const About = props => (
   <Fragment>
     <div className={props.classes.root}>
       <Grid container spacing={8}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <Paper elevation={0} className={props.classes.paper}>
+            <Typography variant="display1">About</Typography>
             <Typography align="justify" variant="subheading">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper, ipsum ut
               condimentum pulvinar, ligula diam accumsan mi, eget tempor mauris est pretium erat. In
@@ -20,13 +21,6 @@ const About = props => (
               Cras eros purus, porttitor bibendum tellus non, auctor gravida ex. Vivamus at
               consequat ipsum. Donec viverra lectus vel bibendum eleifend. Donec elit nibh, iaculis
               placerat maximus vitae, euismod sit amet metus. Quisque ac est metus.
-            </Typography>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} className={props.classes.gridPic}>
-          <Paper elevation={0} className={props.classes.paper}>
-            <Typography align="left" variant="title">
-              Picture goes here
             </Typography>
           </Paper>
         </Grid>
@@ -44,22 +38,6 @@ const styles = theme => ({
   paper: {
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  },
-  gridPic: {
-    border: '1px solid #f0f0f0',
-  },
-  PageTitle: {
-    marginLeft: 180,
-  },
-  appBar: {
-    position: 'absolute',
-    backgroundColor: 'transparent',
-    boxShadow: 'none',
-    top: 0,
-    zIndex: -1,
-  },
-  appBarHeader: {
-    flexGrow: 1,
   },
 });
 

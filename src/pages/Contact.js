@@ -2,35 +2,32 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Paper, Typography, withStyles } from '@material-ui/core';
 
-function Contact(props) {
-  const { classes } = props;
-  return (
-    <Fragment>
-      <div className={classes.root}>
-        <Grid container spacing={8}>
-          <Grid item xs={12} sm={6}>
-            <Paper elevation={0} className={props.classes.paper}>
-              <Typography align="justify" variant="subheading">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper, ipsum ut
-                condimentum pulvinar, ligula diam accumsan mi, eget tempor mauris est pretium erat.
-                In malesuada nisl leo, vitae aliquet quam aliquet vel. Vestibulum imperdiet euismod
-                arcu at fringilla. Mauris scelerisque orci non turpis fringilla, et tempus odio
-                facilisis. Fusce maximus gravida justo sed venenatis. Suspendisse nec ullamcorper
-                nunc, in bibendum nunc. Suspendisse pulvinar viverra arcu quis fermentum. Quisque
-                sem dolor, interdum vitae lacus ut, tempor tempor diam. Vestibulum sodales eros
-                tellus, vitae fermentum neque lacinia ut. Quisque molestie est bibendum libero
-                volutpat ultrices. Cras eros purus, porttitor bibendum tellus non, auctor gravida
-                ex. Vivamus at consequat ipsum. Donec viverra lectus vel bibendum eleifend. Donec
-                elit nibh, iaculis placerat maximus vitae, euismod sit amet metus. Quisque ac est
-                metus.
-              </Typography>
-            </Paper>
-          </Grid>
+const Contact = props => (
+  <Fragment>
+    <div className={props.classes.root}>
+      <Grid container spacing={8}>
+        <Grid item xs={12}>
+          <Paper elevation={0} className={props.classes.paper}>
+            <Typography variant="display1">Contact</Typography>
+            <Typography align="justify" variant="subheading">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper, ipsum ut
+              condimentum pulvinar, ligula diam accumsan mi, eget tempor mauris est pretium erat. In
+              malesuada nisl leo, vitae aliquet quam aliquet vel. Vestibulum imperdiet euismod arcu
+              at fringilla. Mauris scelerisque orci non turpis fringilla, et tempus odio facilisis.
+              Fusce maximus gravida justo sed venenatis. Suspendisse nec ullamcorper nunc, in
+              bibendum nunc. Suspendisse pulvinar viverra arcu quis fermentum. Quisque sem dolor,
+              interdum vitae lacus ut, tempor tempor diam. Vestibulum sodales eros tellus, vitae
+              fermentum neque lacinia ut. Quisque molestie est bibendum libero volutpat ultrices.
+              Cras eros purus, porttitor bibendum tellus non, auctor gravida ex. Vivamus at
+              consequat ipsum. Donec viverra lectus vel bibendum eleifend. Donec elit nibh, iaculis
+              placerat maximus vitae, euismod sit amet metus. Quisque ac est metus.
+            </Typography>
+          </Paper>
         </Grid>
-      </div>
-    </Fragment>
-  );
-}
+      </Grid>
+    </div>
+  </Fragment>
+);
 
 const styles = theme => ({
   root: {
@@ -41,37 +38,6 @@ const styles = theme => ({
   paper: {
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  },
-  paperContactForm: {
-    color: theme.palette.text.secondary,
-  },
-  contactItem: {
-    display: 'flex',
-  },
-  contactItemType: {
-    width: 75,
-    color: theme.palette.text.secondary,
-  },
-  contactItemValue: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  contactItemIcon: {
-    fontSize: 18,
-    marginRight: 10,
-  },
-  PageTitle: {
-    marginLeft: 180,
-  },
-  appBar: {
-    position: 'absolute',
-    backgroundColor: 'transparent',
-    boxShadow: 'none',
-    top: 0,
-    zIndex: -1,
-  },
-  appBarHeader: {
-    flexGrow: 1,
   },
 });
 
