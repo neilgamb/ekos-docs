@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { Drawer, MenuItem, IconButton, Typography, withStyles } from '@material-ui/core';
-import { ChevronLeft } from '@material-ui/icons';
-
+import { Collapse, Drawer, ListItem, IconButton, Typography, withStyles } from '@material-ui/core';
+import { ChevronLeft, ExpandMore, ExpandLess } from '@material-ui/icons';
 import logo from '../images/ekos_.png';
 
 function Navigation(props) {
-  const { classes, open, handleDrawerClose } = props;
+  const {
+    classes,
+    open,
+    styleOpen,
+    codeOpen,
+    handleDrawerClose,
+    handleStyleClick,
+    handleCodeClick,
+  } = props;
   return (
     <Drawer
       variant="persistent"
@@ -30,15 +37,39 @@ function Navigation(props) {
         </IconButton>
       </div>
 
-      <NavLink exact className={classes.navLink} activeclass="active" to="/">
-        <MenuItem className={classes.menuItem}>Welcome</MenuItem>
-      </NavLink>
-      <NavLink className={classes.navLink} activeclass="active" to="/section_one">
-        <MenuItem className={classes.menuItem}>Section One</MenuItem>
-      </NavLink>
-      <NavLink className={classes.navLink} activeclass="active" to="/section_two">
-        <MenuItem className={classes.menuItem}>Section Two</MenuItem>
-      </NavLink>
+      <ListItem button className={classes.listItem}>
+        <NavLink exact className={classes.navLink} activeclass="active" to="/">
+          <Typography variant="subheading">Welcome</Typography>
+        </NavLink>
+      </ListItem>
+
+      <ListItem button className={classes.listItem} onClick={handleStyleClick}>
+        <Typography variant="subheading">Style</Typography>
+        {styleOpen ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={styleOpen} timeout="auto" unmountOnExit>
+        <ListItem button className={classes.listItem}>
+          <NavLink className={classes.navLink} activeclass="active" to="/section_one">
+            <Typography color="secondary" variant="subheading">
+              Section One
+            </Typography>
+          </NavLink>
+        </ListItem>
+      </Collapse>
+
+      <ListItem button className={classes.listItem} onClick={handleCodeClick}>
+        <Typography variant="subheading">Code</Typography>
+        {codeOpen ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={codeOpen} timeout="auto" unmountOnExit>
+        <ListItem button className={classes.listItem}>
+          <NavLink className={classes.navLink} activeclass="active" to="/section_two">
+            <Typography color="secondary" variant="subheading">
+              Section Two
+            </Typography>
+          </NavLink>
+        </ListItem>
+      </Collapse>
     </Drawer>
   );
 }
@@ -49,6 +80,7 @@ const styles = theme => ({
   drawerPaper: {
     position: 'relative',
     width: drawerWidth,
+    background: theme.palette.secondary.light,
   },
   drawerHeader: {
     display: 'flex',
@@ -64,8 +96,13 @@ const styles = theme => ({
   logo: {
     width: 70,
   },
-  menuItem: {
-    padding: '10px 100px 10px 15px',
+  listItem: {
+    padding: '10px 15px',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  'listItem:hover': {
+    background: 'background: rgb(231, 231, 231)',
   },
   navLink: {
     textDecoration: 'none',

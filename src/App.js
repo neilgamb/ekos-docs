@@ -11,26 +11,34 @@ import SectionTwo from './pages/SectionTwo';
 import ekosTheme from './styles/theme';
 
 class App extends React.Component {
-  state = { open: false };
-
-  handleDrawerOpen = () => {
-    this.setState({ open: true });
+  state = {
+    open: false,
+    styleOpen: false,
+    codeOpen: false,
   };
 
-  handleDrawerClose = () => {
-    this.setState({ open: false });
-  };
+  handleDrawerOpen = () => this.setState({ open: true });
+  handleDrawerClose = () => this.setState({ open: false });
+  handleStyleClick = () => this.setState({ styleOpen: !this.state.styleOpen, codeOpen: false });
+  handleCodeClick = () => this.setState({ codeOpen: !this.state.codeOpen, styleOpen: false });
 
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
+    const { open, styleOpen, codeOpen } = this.state;
 
     return (
       <MuiThemeProvider theme={ekosTheme}>
         <Router>
           <div className={classes.appFrame}>
             <AppBarWrapper open={open} handleDrawerOpen={this.handleDrawerOpen} />
-            <Navigation open={open} handleDrawerClose={this.handleDrawerClose} />
+            <Navigation
+              open={open}
+              styleOpen={styleOpen}
+              codeOpen={codeOpen}
+              handleDrawerClose={this.handleDrawerClose}
+              handleStyleClick={this.handleStyleClick}
+              handleCodeClick={this.handleCodeClick}
+            />
 
             <main
               className={classNames(classes.content, classes['content-left'], {
@@ -57,7 +65,6 @@ const styles = theme => ({
     flexGrow: 1,
   },
   appFrame: {
-    height: 430,
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
