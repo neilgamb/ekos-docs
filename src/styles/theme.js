@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core';
 
-const theme = createMuiTheme({
+const cidermaker = createMuiTheme({
   palette: {
     primary: {
       main: '#F7CF00',
@@ -23,4 +23,12 @@ const theme = createMuiTheme({
   },
 });
 
-export default theme;
+const getTheme = (brand) => {
+  let theme;
+  if (brand === 'cidermaker') {
+    theme = cidermaker;
+  }
+  return theme;
+};
+
+export default getTheme;

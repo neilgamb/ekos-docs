@@ -8,7 +8,7 @@ import Navigation from './pages/Navigation';
 import Welcome from './pages/Welcome';
 import SectionOne from './pages/SectionOne';
 import SectionTwo from './pages/SectionTwo';
-import ekosTheme from './styles/theme';
+import getTheme from './styles/theme';
 
 class App extends React.Component {
   state = {
@@ -27,7 +27,7 @@ class App extends React.Component {
     const { open, styleOpen, codeOpen } = this.state;
 
     return (
-      <MuiThemeProvider theme={ekosTheme}>
+      <MuiThemeProvider theme={getTheme('cidermaker')}>
         <Router>
           <div className={classes.appFrame}>
             <AppBarWrapper open={open} handleDrawerOpen={this.handleDrawerOpen} />
