@@ -10,7 +10,7 @@ function SectionOne(props) {
       <Grid container spacing={8}>
         <Grid item xs={12}>
           <Paper elevation={0} className={classes.paper}>
-            <AppBarWrapper secondary open={open} title="Style >> Section One" />
+            <AppBarWrapper secondary open={open} title="Style > Section One" />
             <Typography align="justify" variant="subheading">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper, ipsum ut
               condimentum pulvinar, ligula diam accumsan mi, eget tempor mauris est pretium erat. In
