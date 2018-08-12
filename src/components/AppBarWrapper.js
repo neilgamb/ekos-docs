@@ -63,7 +63,7 @@ const styles = theme => ({
     pointerEvents: 'none',
   },
   appBarText: {
-    color: 'white',
+    color: 'black',
   },
   appBarTextShift: {
     marginLeft: 75,
