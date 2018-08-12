@@ -5,9 +5,9 @@ import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import AppBarWrapper from './components/AppBarWrapper';
 import Navigation from './pages/Navigation';
-import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
+import Welcome from './pages/Welcome';
+import SectionOne from './pages/SectionOne';
+import SectionTwo from './pages/SectionTwo';
 import ekosTheme from './styles/theme';
 
 class App extends React.Component {
@@ -39,9 +39,9 @@ class App extends React.Component {
               })}
             >
               <div className={classes.drawerHeader} />
-              <Route exact path="/" component={Home} />
-              <Route path="/about" component={About} />
-              <Route path="/contact" component={Contact} />
+              <Route exact path="/" component={Welcome} />
+              <Route path="/section_one" component={SectionOne} />
+              <Route path="/section_two" component={SectionTwo} />
             </main>
           </div>
         </Router>

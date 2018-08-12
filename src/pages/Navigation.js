@@ -31,13 +31,13 @@ function Navigation(props) {
       </div>
 
       <NavLink exact className={classes.navLink} activeclass="active" to="/">
-        <MenuItem className={classes.menuItem}>Home</MenuItem>
+        <MenuItem className={classes.menuItem}>Welcome</MenuItem>
       </NavLink>
-      <NavLink className={classes.navLink} activeclass="active" to="/about">
-        <MenuItem className={classes.menuItem}>About</MenuItem>
+      <NavLink className={classes.navLink} activeclass="active" to="/section_one">
+        <MenuItem className={classes.menuItem}>Section One</MenuItem>
       </NavLink>
-      <NavLink className={classes.navLink} activeclass="active" to="/contact">
-        <MenuItem className={classes.menuItem}>Contact</MenuItem>
+      <NavLink className={classes.navLink} activeclass="active" to="/section_two">
+        <MenuItem className={classes.menuItem}>Section Two</MenuItem>
       </NavLink>
     </Drawer>
   );
@@ -65,7 +65,7 @@ const styles = theme => ({
     width: 70,
   },
   menuItem: {
-    padding: '10px 100px 10px 25px',
+    padding: '10px 100px 10px 15px',
   },
   navLink: {
     textDecoration: 'none',

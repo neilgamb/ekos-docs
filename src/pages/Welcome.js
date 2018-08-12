@@ -2,13 +2,13 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Paper, Typography, withStyles } from '@material-ui/core';
 
-const About = props => (
+const Welcome = props => (
   <Fragment>
     <div className={props.classes.root}>
       <Grid container spacing={8}>
         <Grid item xs={12}>
           <Paper elevation={0} className={props.classes.paper}>
-            <Typography variant="display1">About</Typography>
+            <Typography variant="display1">Welcome</Typography>
             <Typography align="justify" variant="subheading">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper, ipsum ut
               condimentum pulvinar, ligula diam accumsan mi, eget tempor mauris est pretium erat. In
@@ -41,8 +41,8 @@ const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(About);
+export default withStyles(styles)(Welcome);
 
-About.propTypes = {
+Welcome.propTypes = {
   classes: PropTypes.instanceOf(Object).isRequired,
 };

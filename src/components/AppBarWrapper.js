@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { AppBar, IconButton, Toolbar, Typography, withStyles, withTheme } from '@material-ui/core';
+import { AppBar, IconButton, Toolbar, withStyles, withTheme } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 
 function AppBarWrapper(props) {
