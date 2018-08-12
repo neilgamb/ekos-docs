@@ -1,14 +1,16 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Paper, Typography, withStyles } from '@material-ui/core';
+import AppBarWrapper from '../components/AppBarWrapper';
 
-const SectionTwo = props => (
-  <Fragment>
-    <div className={props.classes.root}>
+function SectionTwo(props) {
+  const { classes, open } = props;
+  return (
+    <div className={classes.root}>
       <Grid container spacing={8}>
         <Grid item xs={12}>
-          <Paper elevation={0} className={props.classes.paper}>
-            <Typography variant="display1">Contact</Typography>
+          <Paper elevation={0} className={classes.paper}>
+            <AppBarWrapper secondary open={open} title="Code >> Section Two" />
             <Typography align="justify" variant="subheading">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper, ipsum ut
               condimentum pulvinar, ligula diam accumsan mi, eget tempor mauris est pretium erat. In
@@ -26,8 +28,8 @@ const SectionTwo = props => (
         </Grid>
       </Grid>
     </div>
-  </Fragment>
-);
+  );
+}
 
 const styles = theme => ({
   root: {
@@ -45,4 +47,5 @@ export default withStyles(styles)(SectionTwo);
 
 SectionTwo.propTypes = {
   classes: PropTypes.instanceOf(Object).isRequired,
+  open: PropTypes.bool.isRequired,
 };

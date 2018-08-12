@@ -1,27 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { AppBar, IconButton, Toolbar, withStyles, withTheme } from '@material-ui/core';
+import { AppBar, IconButton, Toolbar, Typography, withStyles, withTheme } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 
 function AppBarWrapper(props) {
-  const { classes, open, handleDrawerOpen } = props;
+  const {
+    classes, open, secondary, title, handleDrawerOpen,
+  } = props;
   return (
     <AppBar
       className={classNames(classes.appBar, {
         [classes.appBarShift]: open,
         [classes['appBarShift-left']]: open,
+        [classes.appBarSecondary]: secondary,
       })}
     >
       <Toolbar disableGutters={!open}>
-        <IconButton
-          color="inherit"
-          aria-label="Open drawer"
-          onClick={handleDrawerOpen}
-          className={classNames(classes.menuButton, open && classes.hide)}
+        {secondary ? null : (
+          <IconButton
+            color="inherit"
+            aria-label="Open drawer"
+            onClick={handleDrawerOpen}
+            className={classNames(classes.menuButton, open && classes.hide)}
+          >
+            <Menu />
+          </IconButton>
+        )}
+        <Typography
+          variant="title"
+          className={classNames(classes.appBarText, { [classes.appBarTextShift]: !open })}
         >
-          <Menu />
-        </IconButton>
+          {title}
+        </Typography>
       </Toolbar>
     </AppBar>
   );
@@ -47,6 +58,16 @@ const styles = theme => ({
   'appBarShift-left': {
     marginLeft: drawerWidth,
   },
+  appBarSecondary: {
+    background: 'transparent',
+    pointerEvents: 'none',
+  },
+  appBarText: {
+    color: 'white',
+  },
+  appBarTextShift: {
+    marginLeft: 75,
+  },
   menuButton: {
     marginLeft: 12,
     marginRight: 20,
@@ -59,7 +80,15 @@ const styles = theme => ({
 AppBarWrapper.propTypes = {
   open: PropTypes.bool.isRequired,
   classes: PropTypes.instanceOf(Object).isRequired,
-  handleDrawerOpen: PropTypes.func.isRequired,
+  handleDrawerOpen: PropTypes.func,
+  secondary: PropTypes.bool,
+  title: PropTypes.string,
+};
+
+AppBarWrapper.defaultProps = {
+  handleDrawerOpen: () => {},
+  secondary: false,
+  title: '',
 };
 
 export default withTheme()(withStyles(styles)(AppBarWrapper));

@@ -48,8 +48,8 @@ class App extends React.Component {
             >
               <div className={classes.drawerHeader} />
               <Route exact path="/" component={Welcome} />
-              <Route path="/section_one" component={SectionOne} />
-              <Route path="/section_two" component={SectionTwo} />
+              <Route path="/section_one" render={() => <SectionOne open={open} />} />
+              <Route path="/section_two" render={() => <SectionTwo open={open} />} />
             </main>
           </div>
         </Router>
