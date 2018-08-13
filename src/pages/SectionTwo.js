@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Paper, Typography, withStyles } from '@material-ui/core';
-import Markdown from 'markdown-to-jsx';
 import AppBarWrapper from '../components/AppBarWrapper';
 
 function SectionTwo(props) {
@@ -13,7 +12,7 @@ function SectionTwo(props) {
           <Paper elevation={0} className={classes.paper}>
             <AppBarWrapper secondary open={open} title="Code > Section Two" />
             <Typography align="justify" variant="subheading">
-              <Markdown># This is Markdown</Markdown>
+              Text here
             </Typography>
           </Paper>
         </Grid>
