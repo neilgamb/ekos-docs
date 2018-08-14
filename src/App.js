@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import AppBarWrapper from './components/AppBarWrapper';
-import Navigation from './pages/Navigation';
+import Navigation from './components/Navigation';
 import Welcome from './pages/Welcome';
-import SectionOne from './pages/SectionOne';
-import SectionTwo from './pages/SectionTwo';
+import SectionOne from './pages/style/SectionOne';
+import SectionTwo from './pages/code/SectionTwo';
 import getTheme from './styles/theme';
 
 class App extends React.Component {
