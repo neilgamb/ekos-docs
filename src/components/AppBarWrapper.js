@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import ThemeSelect from './ThemeSelect';
 import { AppBar, IconButton, Toolbar, Typography, withStyles, withTheme } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import { withRouter } from 'react-router-dom';
@@ -10,14 +11,15 @@ function AppBarWrapper(props) {
   const {
     classes,
     open,
+    theme,
     location,
     handleDrawerOpen,
+    handleThemeChange,
   } = props;
 
   let title;
 
   switch (location.pathname) {
-    // case "/": title = ""; break;
     case "/section_one": title = "Section One"; break;
     case "/section_two": title = "Section Two"; break;
     default: title = "";
@@ -30,7 +32,7 @@ function AppBarWrapper(props) {
         [classes['appBarShift-left']]: open,
       })}
     >
-      <Toolbar disableGutters={!open}>
+      <Toolbar disableGutters>
         <IconButton
           color="inherit"
           aria-label="Open drawer"
@@ -41,10 +43,14 @@ function AppBarWrapper(props) {
         </IconButton>
         <Typography
           variant="title"
-          className={classNames(classes.appBarText, { [classes.appBarTextShift]: !open })}
+          className={classNames(classes.appBarText, open && classes.titleOpen, { [classes.appBarTextShift]: !open })}
         >
           {title}
         </Typography>
+        <ThemeSelect
+          theme={theme}
+          handleThemeChange={handleThemeChange}
+        />
       </Toolbar>
     </AppBar>
   );
@@ -72,7 +78,11 @@ const styles = theme => ({
   },
   appBarText: {
     color: 'black',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    flex: 1
+  },
+  titleOpen: {
+    margin: 15
   },
   hide: {
     display: 'none',
@@ -85,10 +95,13 @@ export default withRouter(withTheme()(withStyles(styles)(AppBarWrapper)));
 
 AppBarWrapper.propTypes = {
   open: PropTypes.bool.isRequired,
+  theme: PropTypes.string.isRequired,
   classes: PropTypes.instanceOf(Object).isRequired,
-  handleDrawerOpen: PropTypes.func,
+  handleDrawerOpen: PropTypes.func.isRequired,
+  handleThemeChange: PropTypes.func.isRequired,
 };
 
 AppBarWrapper.defaultProps = {
   handleDrawerOpen: () => { },
+  handleThemeChange: () => { },
 };

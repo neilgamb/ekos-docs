@@ -8,29 +8,35 @@ import Navigation from './components/Navigation';
 import Welcome from './pages/Welcome';
 import SectionOne from './pages/style/SectionOne';
 import SectionTwo from './pages/code/SectionTwo';
-import getTheme from './styles/theme';
+import { getTheme } from './styles/theme';
 
 class App extends React.Component {
   state = {
     open: false,
     styleOpen: false,
     codeOpen: false,
+    theme: "brewmaster"
   };
 
   handleDrawerOpen = () => this.setState({ open: true });
   handleDrawerClose = () => this.setState({ open: false });
   handleStyleClick = () => this.setState({ styleOpen: !this.state.styleOpen, codeOpen: false });
   handleCodeClick = () => this.setState({ codeOpen: !this.state.codeOpen, styleOpen: false });
+  handleThemeChange = (event) => this.setState({ theme: event.target.value });
 
   render() {
     const { classes } = this.props;
-    const { open, styleOpen, codeOpen } = this.state;
+    const { open, styleOpen, codeOpen, theme } = this.state;
 
     return (
-      <MuiThemeProvider theme={getTheme('cidermaker')}>
+      <MuiThemeProvider theme={getTheme(theme)}>
         <Router>
           <div className={classes.appFrame}>
-            <AppBarWrapper open={open} handleDrawerOpen={this.handleDrawerOpen} />
+            <AppBarWrapper
+              open={open}
+              theme={theme}
+              handleThemeChange={this.handleThemeChange}
+              handleDrawerOpen={this.handleDrawerOpen} />
             <Navigation
               open={open}
               styleOpen={styleOpen}
