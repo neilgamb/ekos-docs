@@ -3,30 +3,42 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { AppBar, IconButton, Toolbar, Typography, withStyles, withTheme } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
+import { withRouter } from 'react-router-dom';
 
 function AppBarWrapper(props) {
+
   const {
-    classes, open, secondary, title, handleDrawerOpen,
+    classes,
+    open,
+    location,
+    handleDrawerOpen,
   } = props;
+
+  let title;
+
+  switch (location.pathname) {
+    // case "/": title = ""; break;
+    case "/section_one": title = "Section One"; break;
+    case "/section_two": title = "Section Two"; break;
+    default: title = "";
+  }
+
   return (
     <AppBar
       className={classNames(classes.appBar, {
         [classes.appBarShift]: open,
         [classes['appBarShift-left']]: open,
-        [classes.appBarSecondary]: secondary,
       })}
     >
       <Toolbar disableGutters={!open}>
-        {secondary ? null : (
-          <IconButton
-            color="inherit"
-            aria-label="Open drawer"
-            onClick={handleDrawerOpen}
-            className={classNames(classes.menuButton, open && classes.hide)}
-          >
-            <Menu />
-          </IconButton>
-        )}
+        <IconButton
+          color="inherit"
+          aria-label="Open drawer"
+          onClick={handleDrawerOpen}
+          className={classNames(classes.menuButton, open && classes.hide)}
+        >
+          <Menu />
+        </IconButton>
         <Typography
           variant="title"
           className={classNames(classes.appBarText, { [classes.appBarTextShift]: !open })}
@@ -58,37 +70,25 @@ const styles = theme => ({
   'appBarShift-left': {
     marginLeft: drawerWidth,
   },
-  appBarSecondary: {
-    background: 'transparent',
-    pointerEvents: 'none',
-  },
   appBarText: {
     color: 'black',
-  },
-  appBarTextShift: {
-    marginLeft: 75,
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20,
+    whiteSpace: 'nowrap'
   },
   hide: {
     display: 'none',
   },
 });
 
+// export default withTheme()(withStyles(styles)(AppBarWrapper));
+export default withRouter(withTheme()(withStyles(styles)(AppBarWrapper)));
+
+
 AppBarWrapper.propTypes = {
   open: PropTypes.bool.isRequired,
   classes: PropTypes.instanceOf(Object).isRequired,
   handleDrawerOpen: PropTypes.func,
-  secondary: PropTypes.bool,
-  title: PropTypes.string,
 };
 
 AppBarWrapper.defaultProps = {
-  handleDrawerOpen: () => {},
-  secondary: false,
-  title: '',
+  handleDrawerOpen: () => { },
 };
-
-export default withTheme()(withStyles(styles)(AppBarWrapper));
