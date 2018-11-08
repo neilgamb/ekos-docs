@@ -12,7 +12,7 @@ import { getTheme } from './styles/theme';
 
 class App extends React.Component {
   state = {
-    open: false,
+    open: true,
     styleOpen: false,
     codeOpen: false,
     theme: "brewmaster"
